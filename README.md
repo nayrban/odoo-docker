@@ -1,3 +1,7 @@
+Commands to run odoo using docker
+
+Reference guide https://github.com/docker-library/docs/tree/master/odoo
+
 -d to run in background
 docker run -d -e POSTGRES_USER=odoo -e POSTGRES_PASSWORD=odoo --name db postgres:9.4
 
