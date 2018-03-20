@@ -7,7 +7,7 @@
 version: "3"
 services:
   odoo:
-    image: odoo:11.0
+    image: odoo
     deploy:
        replicas: 3
        restart_policy:
@@ -17,8 +17,8 @@ services:
     ports:
       - "8069:8069"
     volumes:
-      - odoo-web-data:/var/lib/odoo   		
-      - E:/gpshiring/Demos/gps.odoo.modules/src:/mnt/extra-addons
+      - odoo-web-data:/var/lib/odoo
+      - E:/gpshiring/Demos/gps.odoo.modules/src:/mnt/extra-addons   
 
   db:
     image: postgres:9.4
@@ -28,6 +28,14 @@ services:
       - PGDATA=/var/lib/postgresql/data/pgdata
     volumes:
       - odoo-db-data:/var/lib/postgresql/data/pgdata
+  nginx:
+    image: nginx
+    ports:
+      - "8085:80"
+    depends_on:
+      - odoo
+    volumes:
+      - E:\gpshiring\Demos\odoo-docker-compose\nginx\nginx.conf:/etc/nginx/nginx.conf:ro
 volumes:
   odoo-web-data:
   odoo-db-data:
