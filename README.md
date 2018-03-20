@@ -44,8 +44,6 @@ Download the docker-compose.yml file to a folder open a terminal and paste
 
 <strong>run the docker-compose with docker-compose up -d</strong>
 
-You can check the containers using 
-
 This command will list the running containers
 
 <strong>docker container ls</strong>
