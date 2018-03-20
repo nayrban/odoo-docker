@@ -26,17 +26,20 @@ This command -d is used to run postgres in background
 <strong>2)</strong>Run docker with addons
 
 This command -v will create a volume in the container
+
 <strong>docker run -v E:\gpshiring\Demos\gps.odoo.modules\src:/mnt/extra-addons -p 8069:8069 --name odoo --link db:db -t odoo</strong>
 
 <strong>Second Time</strong>
 
 Just use:
- docker start db 
+
+ docker start db <br/>
  docker start odoo
  
 connect to localhost:8069 > defaut url
 
 <strong>Running odoo instance as service</strong>
+
 Download the docker-compose.yml file to a folder open a terminal and paste
 
 <strong>run the docker-compose with docker-compose up -d</strong>
