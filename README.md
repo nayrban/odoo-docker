@@ -1,18 +1,41 @@
 Commands to run odoo using docker
 
+Windows 10 Pro
+Install docker and check if was added to the PATH
+from https://docs.docker.com/install/
+CMD docker --version
+
+Now this lets go with odoo
+
 Reference guide https://github.com/docker-library/docs/tree/master/odoo
 
--d to run in background
-docker run -d -e POSTGRES_USER=odoo -e POSTGRES_PASSWORD=odoo --name db postgres:9.4
+We need postgres and odoo images
 
-docker run -p 8069:8069 --name odoo --link db:db -t odoo
+<strong>First Time</strong>
+
+This command -d is used to run postgres in background
+
+<strong>docker run -d -e POSTGRES_USER=odoo -e POSTGRES_PASSWORD=odoo --name db postgres:9.4</strong>
+
+<strong>1)</strong> Run odoo without any custom addon
+
+<strong>docker run -p 8069:8069 --name odoo --link db:db -t odoo</strong>
 
 
-run docker with addons
+<strong>2)</strong>Run docker with addons
 
--v = to create a volume in the container
-docker run -v E:\gpshiring\Demos\gps.odoo.modules\src:/mnt/extra-addons -p 8069:8069 --name odoo --link db:db -t odoo
+This command -v will create a volume in the container
+<strong>docker run -v E:\gpshiring\Demos\gps.odoo.modules\src:/mnt/extra-addons -p 8069:8069 --name odoo --link db:db -t odoo</strong>
 
+<strong>Second Time</strong>
 
+Just use:
+ docker start db 
+ docker start odoo
+ 
+connect to localhost:8069 > defaut url
 
-run the docker-compose with docker-compose up -d
+<strong>Running odoo instance as service</strong>
+Download the docker-compose.yml file to a folder open a terminal and paste
+
+<strong>run the docker-compose with docker-compose up -d</strong>
