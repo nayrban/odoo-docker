@@ -1,0 +1,33 @@
+# Create a odoo services
+# In odoo volumes we need to set the path of our 
+# current addons folder in local machine
+# we can also define environment variables
+# odoo deploy replicas are used on failure state
+# odoo depends_on links 2 containers
+version: "3"
+services:
+  odoo:
+    image: odoo:11.0
+    deploy:
+       replicas: 3
+       restart_policy:
+            condition: on-failure
+    depends_on:
+      - db
+    ports:
+      - "8069:8069"
+    volumes:
+      - odoo-web-data:/var/lib/odoo   		
+      - E:/gpshiring/Demos/gps.odoo.modules/src:/mnt/extra-addons
+
+  db:
+    image: postgres:9.4
+    environment:
+      - POSTGRES_PASSWORD=odoo
+      - POSTGRES_USER=odoo
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      - odoo-db-data:/var/lib/postgresql/data/pgdata
+volumes:
+  odoo-web-data:
+  odoo-db-data:
