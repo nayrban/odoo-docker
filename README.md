@@ -1,6 +1,7 @@
 Commands to run odoo using docker
 
-Windows 10 Pro
+Windows 10 Pro.
+
 Install docker and check if was added to the PATH
 from https://docs.docker.com/install/
 CMD docker --version
